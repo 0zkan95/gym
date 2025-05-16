@@ -148,8 +148,14 @@ const ContactUs = ({ setSelectedPage }: Props) => {
             </div>
           </motion.div>
 
-          <div className="absolute -right-20 -bottom-40 z-[-1] hidden opacity-40 md:block">
-            <Image src="/EvolveText.png" alt="evolve-text" width={1000} height={1000} />
+          <div className="absolute -right-10 -bottom-20 z-[-1] hidden opacity-40 md:block">
+            <Image
+              src="/EvolveText.png"
+              alt="evolve-text"
+              width={800}
+              height={800}
+              className="max-w-none"
+            />
           </div>
         </div>
       </motion.div>

@@ -1,9 +1,10 @@
 import { SelectedPage } from '@/shared/types';
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useRef } from 'react';
 import HText from '@/components/HText';
 import Class from '@/components/Class';
 import { ClassType } from '@/shared/types';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 
 const classes: Array<ClassType> = [
   {
@@ -45,6 +46,22 @@ type Props = {
 };
 
 const OurClasses = ({ setSelectedPage }: Props) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400; // Adjust this value to control scroll distance
+      const currentScroll = scrollContainerRef.current.scrollLeft;
+      const newScroll =
+        direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount;
+
+      scrollContainerRef.current.scrollTo({
+        left: newScroll,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <section id="ourclasses" className="bg-primary-100 w-full py-40">
       <motion.div onViewportEnter={() => setSelectedPage(SelectedPage.OurClasses)}>
@@ -68,17 +85,36 @@ const OurClasses = ({ setSelectedPage }: Props) => {
             </p>
           </div>
         </motion.div>
-        <div className="mt-10 h-[353px] w-full overflow-x-auto overflow-y-hidden">
-          <ul className="w-[2800px] whitespace-nowrap">
-            {classes.map((item, index) => (
-              <Class
-                key={`${item.name}-${index}`}
-                name={item.name}
-                description={item.description}
-                image={item.image}
-              />
-            ))}
-          </ul>
+        <div className="mt-10 h-[353px] w-full">
+          <div className="relative h-full w-full overflow-hidden">
+            <button
+              onClick={() => scroll('left')}
+              className="bg-primary-500 hover:bg-primary-400 absolute top-1/2 left-4 z-40 -translate-y-1/2 cursor-pointer rounded-full p-2 text-white transition duration-300 hover:scale-110"
+            >
+              <ChevronLeftIcon className="h-6 w-6" />
+            </button>
+            <div
+              ref={scrollContainerRef}
+              className="absolute top-0 left-0 h-full w-full overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              <ul className="flex w-[2800px] gap-8">
+                {classes.map((item, index) => (
+                  <Class
+                    key={`${item.name}-${index}`}
+                    name={item.name}
+                    description={item.description}
+                    image={item.image}
+                  />
+                ))}
+              </ul>
+            </div>
+            <button
+              onClick={() => scroll('right')}
+              className="bg-primary-500 hover:bg-primary-400 absolute top-1/2 right-4 z-40 -translate-y-1/2 cursor-pointer rounded-full p-2 text-white transition duration-300 hover:scale-110"
+            >
+              <ChevronRightIcon className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       </motion.div>
     </section>

@@ -3,8 +3,13 @@ import ActionButton from '@/components/ActionButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { SelectedPage } from '@/shared/types';
 
-const HomePage = () => {
+type Props = {
+  setSelectedPage: (value: SelectedPage) => void;
+};
+
+const HomePage = ({ setSelectedPage }: Props) => {
   const [isAboveMediumScreens, setIsAboveMediumScreens] = useState<boolean>(true);
 
   useEffect(() => {
@@ -19,7 +24,10 @@ const HomePage = () => {
 
   return (
     <section id="home" className="gap-16 py-10 md:h-full md:pb-0">
-      <div className="mx-auto w-5/6 items-center justify-between md:flex md:h-5/6">
+      <motion.div
+        onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
+        className="mx-auto w-5/6 items-center justify-between md:flex md:h-5/6"
+      >
         <motion.div
           className="top-20 z-10 mt-32 md:basis-3/5"
           initial="hidden"
@@ -60,7 +68,7 @@ const HomePage = () => {
         <div className="flex basis-3/5 justify-center md:z-10 md:mt-20 md:ml-40 md:justify-items-end">
           <Image src="/HomePageGraphic.png" alt="1st muscle" width={500} height={600} />
         </div>
-      </div>
+      </motion.div>
 
       {/* SPONSORS */}
       {isAboveMediumScreens && (

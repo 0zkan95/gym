@@ -87,18 +87,31 @@ const Benefits = ({ setSelectedPage }: Props) => {
         </motion.div>
 
         {/*  GRAPHİCS AND DESCRIPTION */}
-        <div className="mt-16 items-center justify-between gap-20 rounded-xl p-10 md:mt-28 md:flex">
+        <div className="mt-16 items-center justify-between gap-10 rounded-xl md:mt-28 md:flex">
           {/* GRAPHICS */}
-          <Image
-            src={'/BenefitsPageGraphic.png'}
-            alt="benefits-page-graphic"
-            width={1000}
-            height={1000}
-            className="h-full w-full object-contain"
-          />
+          <div className="md:basis-1/2">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5 }}
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+            >
+              <Image
+                src={'/BenefitsPageGraphic.png'}
+                alt="benefits-page-graphic"
+                width={800}
+                height={800}
+                className="h-full w-full object-contain"
+              />
+            </motion.div>
+          </div>
 
           {/* DESCRIPTION */}
-          <div className="mt-10 p-10">
+          <div className="mt-10 p-10 md:basis-1/2">
             {/* HEADING */}
             <div className="relive">
               <div className="before:z[-1] before:content-abstract before:absolute before:-top-20 before:-left-20">
@@ -106,7 +119,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
                   variants={{
                     hidden: { opacity: 0, x: -50 },
                     visible: { opacity: 1, x: 0 },
@@ -121,7 +134,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
 
             {/* TEXT */}
             <motion.div
-              className="items-center gap-10 md:flex"
+              className="flex-col items-center gap-10"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
