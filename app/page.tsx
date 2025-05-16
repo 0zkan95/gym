@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import HomePage from '@/components/HomePage';
 import Benefits from '@/components/Benefits';
 import OurClasses from '@/components/OurClasses';
+import ContactUs from '@/components/ContactUs';
 
 export default function Home() {
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
@@ -29,6 +30,7 @@ export default function Home() {
       <HomePage setSelectedPage={setSelectedPage} />
       <Benefits setSelectedPage={setSelectedPage} />
       <OurClasses setSelectedPage={setSelectedPage} />
+      <ContactUs setSelectedPage={setSelectedPage} />
     </>
   );
 }
