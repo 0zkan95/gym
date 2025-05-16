@@ -1,11 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { SelectedPage } from '@/shared/types';
 import Navbar from '@/components/Navbar';
 import HomePage from '@/components/HomePage';
 import Benefits from '@/components/Benefits';
+import OurClasses from '@/components/OurClasses';
 
 export default function Home() {
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
+  const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +26,9 @@ export default function Home() {
   return (
     <>
       <Navbar isTopOfPage={isTopOfPage} />
-      <HomePage />
-      <Benefits />
+      <HomePage setSelectedPage={setSelectedPage} />
+      <Benefits setSelectedPage={setSelectedPage} />
+      <OurClasses setSelectedPage={setSelectedPage} />
     </>
   );
 }
