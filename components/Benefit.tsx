@@ -35,7 +35,7 @@ const Benefit = ({ icon, title, description, setSelectedPage }: Props) => {
 
       <h4 className="font-bold">{title}</h4>
       <p className="my-3">{description}</p>
-      <Link href={`#${SelectedPage.ContactUs}`}>
+      <Link href={`#${SelectedPage.ContactUs}`} onClick={() => setSelectedPage(SelectedPage.ContactUs)}>
         <p className="hover:text-secondary-400 mt-5 text-sm text-red-400 underline">Learn More</p>
       </Link>
     </motion.div>

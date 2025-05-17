@@ -1,4 +1,3 @@
-import { ClassType } from '@/shared/types';
 import Image from 'next/image';
 import { useState } from 'react';
 

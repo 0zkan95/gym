@@ -55,7 +55,7 @@ const HomePage = ({ setSelectedPage }: Props) => {
               Body Shapes You Dream of.. Get Your Dream Body Now.
             </p>
             <div className="mt-8 flex items-center gap-8">
-              <ActionButton>Join Now</ActionButton>
+              <ActionButton setSelectedPage={setSelectedPage}>Join Now</ActionButton>
               <Link
                 href="/#contact"
                 className="hover:text-secondary-500 text-sm font-bold text-red-500 underline"
