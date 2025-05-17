@@ -36,4 +36,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 # gym
 
-visit Link: https://evogym-one-sigma.vercel.app/
+Visit Link: https://evogym-one-sigma.vercel.app/
